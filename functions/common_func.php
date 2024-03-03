@@ -122,6 +122,7 @@ while($row=mysqli_fetch_assoc($result)){
       <ion-icon name='star-outline'</ion-icon>
       <ion-icon name='star-outline'></ion-icon>
     </div>
+    
 
     <div class='price-box'>
       <p class='price'>₹$product_price</p>
@@ -131,6 +132,7 @@ while($row=mysqli_fetch_assoc($result)){
   </div>";
 
 echo "</div>";
+
 
 }
 }
@@ -161,8 +163,7 @@ function get_unique_subcat() {
                 $product_price=$row_product['prod_price'];
                 $subcat_id=$row_product['subcat_id'];
 
-                echo "<div class='product-main'>";
-                echo "<div class='product-grid'>";
+                
                 echo "<div class='showcase'>";
                 echo "<div class='showcase-banner'>"; 
                 echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
@@ -210,9 +211,6 @@ function get_unique_subcat() {
                 </div>";
 
                 echo "</div>";
-                echo "</div>";
-                echo "</div>";
-
                 
 
               }
@@ -252,8 +250,7 @@ while($row=mysqli_fetch_assoc($result)){
   $product_price=$row['prod_price'];
   $subcat_id=$row['subcat_id'];
  
-  echo "<div class='product-main'>";
-  echo "<div class='product-grid'>";
+
   echo "<div class='showcase'>";
   echo "<div class='showcase-banner'>"; 
   echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
@@ -301,9 +298,6 @@ while($row=mysqli_fetch_assoc($result)){
   </div>";
 
 echo "</div>";
-echo "</div>";
-echo "</div>";
-
 
 }
       }
@@ -330,8 +324,6 @@ function get_all(){
     $product_price=$row['prod_price'];
     $subcat_id=$row['subcat_id'];
    
-    echo "<div class='product-main'>";
-    echo "<div class='product-grid'>";
     echo "<div class='showcase'>";
     echo "<div class='showcase-banner'>"; 
     echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
@@ -379,8 +371,7 @@ function get_all(){
     </div>";
   
   echo "</div>";
-  echo "</div>";
-  echo "</div>";
+
   
   }
   }
@@ -432,21 +423,23 @@ while($row=mysqli_fetch_assoc($result)){
 }
 
 
-function getIPAddress() {  
+function getIPAddress() {    
+    
+     if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+                $ip = $_SERVER['HTTP_CLIENT_IP'];  
+        }  
+     
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+     }  
+  
+    else{  
+             $ip = $_SERVER['REMOTE_ADDR'];  
+     }  
+     return $ip;  
+ 
+}    
 
-   if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
-              $ip = $_SERVER['HTTP_CLIENT_IP'];  
-      }  
-
-  elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
-              $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
-   }  
-
-  else{  
-           $ip = $_SERVER['REMOTE_ADDR'];  
-   }  
-   return $ip;  
-}  
 
 
 function cart(){
@@ -454,7 +447,7 @@ function cart(){
     global $con;
     $ip = getIPAddress();  
     $get_prod_id = $_GET['add_to_cart'];
-    $select = "SELECT * FROM cart WHERE ip_add='$ip' AND prod_id=$get_prod_id";
+    $select = "SELECT * FROM `cart` WHERE ip_add='$ip' AND prod_id=$get_prod_id";
     $result = mysqli_query($con, $select);
     if (!$result) {
         die('Error executing query: ' . mysqli_error($con));
@@ -467,7 +460,7 @@ function cart(){
       echo "<script>window.open('index.php')</script>"; 
     }
     else{
-      $insert = "INSERT INTO cart (prod_id, ip_add, quantity) VALUES ($get_prod_id, '$ip', 0)";
+      $insert = "INSERT INTO `cart` (prod_id, ip_add, quantity) VALUES ($get_prod_id, '$ip', 0)";
       $result = mysqli_query($con, $insert);
       echo "<script>alert('Product is successfully added into the cart')</script>";
       echo "<script>window.open('index.php')</script>"; 
@@ -481,7 +474,7 @@ function cart_number(){
   if(isset($_GET['add_to_cart'])){
     global $con;
     $ip = getIPAddress();  
-    $select = "SELECT * FROM cart WHERE ip_add='$ip'";
+    $select = "SELECT * FROM `cart` WHERE ip_add='$ip'";
     $result = mysqli_query($con, $select);
     if (!$result) {
         die('Error executing query: ' . mysqli_error($con));
@@ -493,7 +486,7 @@ function cart_number(){
     else{
     global $con;
     $ip = getIPAddress();  
-    $select = "SELECT * FROM cart WHERE ip_add='$ip'";
+    $select = "SELECT * FROM `cart` WHERE ip_add='$ip'";
     $result = mysqli_query($con, $select);
     if (!$result) {
         die('Error executing query: ' . mysqli_error($con));

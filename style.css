@@ -1055,6 +1055,22 @@ padding-right:100px }
   color: var(--davys-gray);
   font-size: var(--fs-11);
 }
+.product-featured .price-box {
+  font-size: var(--fs-3);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.product-featured .price {
+  color: var(--red);
+  font-weight: var(--weight-700);
+}
+
+.product-featured del {
+  color: var(--sonic-silver);
+  font-weight: var(--weight-300);
+}
 
 
 
