@@ -165,93 +165,6 @@ function get_unique_subcat() {
 
                 
                 echo "<div class='showcase'>";
-                echo "<div class='showcase-banner'>"; 
-                echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
-                <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
-
-                <p class='showcase-badge'>15%</p>
-
-                <div class='showcase-actions'>
-
-                <button class='btn-action'>
-                <a href='product_detail.php?prod_id=$product_id'>
-                <ion-icon name='eye-outline'></ion-icon></a>
-                </button>
-
-                <button class='btn-action'>
-                <a href='index.php?add_to_cart=$product_id'>
-                <ion-icon name='bag-add-outline'></ion-icon></a>
-                </button>
-
-                </div>";
-
-                echo "</div>";
-
-                echo "<div class='showcase-content'>
-
-                <a href='#' class='showcase-category'>jacket</a>
-
-                <a href='#'>
-                <h3 class='showcase-title'>$product_title</h3>
-                </a>
-
-                <div class='showcase-rating'>
-                <ion-icon name='star'></ion-icon>
-                <ion-icon name='star'></ion-icon>
-                <ion-icon name='star'></ion-icon>
-                <ion-icon name='star-outline'</ion-icon>
-                <ion-icon name='star-outline'></ion-icon>
-                </div>
-
-                <div class='price-box'>
-                <p class='price'>₹$product_price</p>
-                <del>₹75.00</del>
-                </div>
-
-                </div>";
-
-                echo "</div>";
-                
-
-              }
-                echo "</div>"; 
-          } else {
-             
-              echo "<h3><p style='text-align: center; margin: 20px; padding: 10px; color: #be4d25;'>
-              No products found for this subcategory.</p></h3>";
-          }
-      } else {
-         
-          echo "Error: " . mysqli_error($con);
-      }
-  } else {
-     
-      echo "<p style='text-align: center; margin: 20px; padding: 10px; color: #be4d25;'>No subcategory ID provided.</p>";
-  }
-}
-
-
-function search_prod(){
-  global $con;
-  if(isset($_GET['search_data_product'])){
-    $search_data=$_GET['search_data'];
-    $search_query="select * from `product` where prod_key like '%$search_data%'";
-    $result=mysqli_query($con,$search_query);
-    if($result) {
-          
-      if(mysqli_num_rows($result) > 0) {
-
-while($row=mysqli_fetch_assoc($result)){
-  $product_id=$row['prod_id'];
-  $product_title=$row['prod_title'];
-  $product_description=$row['prod_desc'];
-  $product_img1=$row['prod_img1'];
-  $product_img2=$row['prod_img2'];
-  $product_price=$row['prod_price'];
-  $subcat_id=$row['subcat_id'];
- 
-
-  echo "<div class='showcase'>";
   echo "<div class='showcase-banner'>"; 
   echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
     <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
@@ -289,6 +202,7 @@ while($row=mysqli_fetch_assoc($result)){
       <ion-icon name='star-outline'</ion-icon>
       <ion-icon name='star-outline'></ion-icon>
     </div>
+    
 
     <div class='price-box'>
       <p class='price'>₹$product_price</p>
@@ -298,6 +212,93 @@ while($row=mysqli_fetch_assoc($result)){
   </div>";
 
 echo "</div>";
+                
+
+              }
+                
+          } else {
+             
+              echo "<h3><p style='text-align: center; margin: 20px; padding: 10px; color: #be4d25;'>
+              No products found for this subcategory.</p></h3>";
+          }
+      } else {
+         
+          echo "Error: " . mysqli_error($con);
+      }
+  } else {
+     
+      echo "<p style='text-align: center; margin: 20px; padding: 10px; color: #be4d25;'>No subcategory ID provided.</p>";
+  }
+}
+
+
+function search_prod(){
+  global $con;
+  if(isset($_GET['search_data_product'])){
+    $search_data=$_GET['search_data'];
+    $search_query="select * from `product` where prod_key like '%$search_data%'";
+    $result=mysqli_query($con,$search_query);
+    if($result) {
+          
+      if(mysqli_num_rows($result) > 0) {
+
+while($row=mysqli_fetch_assoc($result)){
+  $product_id=$row['prod_id'];
+  $product_title=$row['prod_title'];
+  $product_description=$row['prod_desc'];
+  $product_img1=$row['prod_img1'];
+  $product_img2=$row['prod_img2'];
+  $product_price=$row['prod_price'];
+  $subcat_id=$row['subcat_id'];
+ 
+
+  echo "<div class='showcase'>";
+    echo "<div class='showcase-banner'>"; 
+    echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
+      <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
+  
+      <p class='showcase-badge'>15%</p>
+  
+      <div class='showcase-actions'>
+  
+        <button class='btn-action'>
+        <a href='product_detail.php?prod_id=$product_id'>
+          <ion-icon name='eye-outline'></ion-icon></a>
+        </button>
+  
+        <button class='btn-action'>
+        <a href='index.php?add_to_cart=$product_id'>
+          <ion-icon name='bag-add-outline'></ion-icon></a>
+        </button>
+  
+      </div>";
+  
+    echo "</div>";
+  
+    echo "<div class='showcase-content'>
+  
+      <a href='#' class='showcase-category'>jacket</a>
+  
+      <a href='#'>
+        <h3 class='showcase-title'>$product_title</h3>
+      </a>
+  
+      <div class='showcase-rating'>
+        <ion-icon name='star'></ion-icon>
+        <ion-icon name='star'></ion-icon>
+        <ion-icon name='star'></ion-icon>
+        <ion-icon name='star-outline'</ion-icon>
+        <ion-icon name='star-outline'></ion-icon>
+      </div>
+  
+      <div class='price-box'>
+        <p class='price'>₹$product_price</p>
+        <del>₹75.00</del>
+      </div>
+  
+    </div>";
+  
+  echo "</div>";
 
 }
       }

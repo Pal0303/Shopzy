@@ -93,16 +93,12 @@
         <div class="header-search-container">
 
           
-          <form action="search_data.php" method="get">
-          <input type="search" name="search_data" style="height: 53px;" class="search-field" placeholder="Search here...">
-          <!-- <input type="submit" value="Search" class="btn btn-outline-danger btn-sm " name="search_data_product"> -->
-          </form>
+        <form action="search_data.php" method="get">
+    <input type="search" name="search_data" style="height: 53px;" class="search-field" placeholder="Search here...">
+    <button class="search-btn">
+    <input type="submit" value="Search"  class="btn btn-outline-danger btn-sm" name="search_data_product"></input></button>
+</form>
 
-          <button class="search-btn">
-            <!-- <ion-icon name="search-outline"></ion-icon> -->
-          <input type="submit" value="Search" class="btn btn-outline-danger btn-sm" name="search_data_product">
-
-          </button>
 
         </div>
 

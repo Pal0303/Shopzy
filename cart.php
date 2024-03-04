@@ -62,7 +62,8 @@ while($row=mysqli_fetch_array($result)){
    
     <td data-th='Total Price' class='border'>₹$price_table/-</td>
     <td class='border'>
-    <input type='checkbox' name='removeitem[]' value=$product_id>
+    <input type='checkbox' name='removeitem[]' value='$product_id'>
+
 
 </td>
 
@@ -109,9 +110,10 @@ echo "<div class='price'>
    
         
       <div class='text-right mt-3'>
-        <a href='#' class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25;'>Checkout</a>
+      
+        <a href='checkout.php' class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25;'>Checkout</a>
         &nbsp; 
-        <a href='#' class='btn btn-primary btn-md pl-4 pr-4' style='background-color: #be4d25;'>Continue Shopping</a>
+        <a href='index.php' class='btn btn-primary btn-md pl-4 pr-4' style='background-color: #be4d25;'>Continue Shopping</a>
       </div>
       </form>        
               
@@ -127,18 +129,26 @@ echo "<div class='price'>
 
     function remove_cart(){
       global $con;
-      if(isset($_POST['remove_cart'])){
-        foreach($_POST['removeitem'] as $remove_id){
-          echo $remove_id;
-          $delete_query="delete from `cart` where prod_id=$remove_id";
-          $run_delete=mysqli_query($con,$delete_query);
-          if($run_delete){
-            echo "<script>window.open('cart.php','_self')</script>";
+      if(isset($_POST['remove_cart']) && isset($_POST['removeitem']) && is_array($_POST['removeitem'])){
+          foreach($_POST['removeitem'] as $remove_id){
+              $delete_query = "DELETE FROM `cart` WHERE prod_id=$remove_id";
+              $run_delete = mysqli_query($con, $delete_query);
+              if($run_delete){
+                  echo "Item $remove_id removed successfully.<br>";
+              } else {
+                  echo "Error removing item $remove_id: " . mysqli_error($con) . "<br>";
+              }
           }
-        }
+          // Redirect to cart.php after items are removed
+          echo "<script>window.open('cart.php','_self')</script>";
+          exit();
+      } else {
+          echo "No items selected for removal.<br>";
       }
-    }
-    echo $remove_item=remove_cart();
+  }
+  
+    $remove_item = remove_cart(); 
+    echo $remove_item;
 
   }
   else{
