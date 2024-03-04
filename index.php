@@ -53,6 +53,7 @@ require_once('functions/common_func.php');
             - PRODUCT FEATURED
           -->
 
+ 
           <div class="product-featured">
 
             <h2 class="title">Deal of the day</h2>
@@ -64,7 +65,7 @@ require_once('functions/common_func.php');
                 <div class="showcase">
                   
                   <div class="showcase-banner">
-                    <img src="img/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img">
+                    <img src="./assets/images/products/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img">
                   </div>
 
                   <div class="showcase-content">
@@ -154,7 +155,7 @@ require_once('functions/common_func.php');
                 <div class="showcase">
               
                   <div class="showcase-banner">
-                    <img src="img/jewellery-1.jpg" alt="Rose Gold diamonds Earring" class="showcase-img">
+                    <img src="./assets/images/products/jewellery-1.jpg" alt="Rose Gold diamonds Earring" class="showcase-img">
                   </div>
               
                   <div class="showcase-content">
@@ -248,7 +249,6 @@ require_once('functions/common_func.php');
 getproducts();
 getIPAddress();
 cart();
-//total_cart();
 ?>
 
             </div>

@@ -38,22 +38,22 @@ while($row=mysqli_fetch_array($result)){
                
                 <thead>
   
-                  <tr>
+                  <tr style='text-align:center;'>
                     
-                    <th style='width:20%'>Product Title</th> 
+                    <th style='width:15%'>Product Title</th> 
                     <th style='width:20%'>Product Image</th>
-                    <th style='width:20%'>Quantity</th>
-                    <th style='width:20%'>Total Price</th>
-                    <th style='width:20%'>Remove</th>
-                    <th style='width:20%'>Operations</th>
+                    <th style='width:15%'>Quantity</th>
+                    <th style='width:15%'>Total Price</th>
+                    <th style='width:15%'>Remove</th>
+                    <th style='width:15%'>Update</th>
                     
                   </tr>
                  
                 </thead>
                 <tbody>
-    <tr>
+    <tr style='text-align:center;'>
     <td data-th='' class='border'>
-      <h5>$product_title</h5>
+      <h6>$product_title</h6>
     </td>
     <td data-th='Product Image' class='border'>
       <img src='./admin/product_img/$product_img1' alt='' class='img-fluid d-none d-md-block rounded mb-2 shadow'>
@@ -62,7 +62,8 @@ while($row=mysqli_fetch_array($result)){
    
     <td data-th='Total Price' class='border'>₹$price_table/-</td>
     <td class='border'>
-    <input type='checkbox' name='removeitem[]' value='$product_id'>
+    <input type='checkbox' name='removeitem[]' style='margin-left: -80px;margin-top: 15px;' value='$product_id'><br>
+    <input class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='    background-color: #be4d25;width: 132px;margin-top: -100px;margin-left: 40px;' type='submit' value='Remove' name='remove_cart'>
 
 
 </td>
@@ -75,7 +76,7 @@ while($row=mysqli_fetch_array($result)){
 
 <input class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25' type='submit' value='Update' name='update_cart'>
 <span style='margin-right: 5px;'></span>
-<input class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25' type='submit' value='Remove' name='remove_cart'>
+
 
 </div>
 
@@ -111,7 +112,7 @@ echo "<div class='price'>
         
       <div class='text-right mt-3'>
       
-        <a href='checkout.php' class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25;'>Checkout</a>
+        <a href='user/checkout.php' class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='background-color: #be4d25;'>Checkout</a>
         &nbsp; 
         <a href='index.php' class='btn btn-primary btn-md pl-4 pr-4' style='background-color: #be4d25;'>Continue Shopping</a>
       </div>

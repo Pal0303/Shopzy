@@ -11,7 +11,7 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-image: url('./img/background.jpg');
+  background-image: url('../img/background.jpg');
 }
 .container{
   max-width: 700px;
@@ -66,39 +66,11 @@ form .input-box span.details{
 .user-details .input-box input:valid{
   border-color: #9b59b6;
 }
- form .gender-details .gender-title{
-  font-size: 20px;
-  font-weight: 500;
- }
- form .category{
-   display: flex;
-   width: 80%;
-   margin: 14px 0 ;
-   justify-content: space-between;
- }
- form .category label{
-   display: flex;
-   align-items: center;
-   cursor: pointer;
- }
- form .category label .dot{
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: #d9d9d9;
-  border: 5px solid transparent;
-  transition: all 0.3s ease;
-}
- #dot-1:checked ~ .category label .one,
- #dot-2:checked ~ .category label .two,
- #dot-3:checked ~ .category label .three{
-   background: #be4d25;
-   border-color: #d9d9d9;
- }
- form input[type="radio"]{
-   display: none;
- }
+
+
+
+
+
  form .button{
    height: 45px;
    margin: 35px 0
@@ -143,4 +115,71 @@ form .user-details .input-box{
   .container .content .category{
     flex-direction: column;
   }
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link a {
+  color: #be4d25;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+
+.input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+.input-box .details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.gender-options input[type="radio"] {
+  display: none;
+}
+
+.gender-options label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.gender-options label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.gender-options input[type="radio"]:checked + label:before {
+  background: #be4d25;
+  border-color: #be4d25;
+}
+
+.gender-options label:hover:before {
+  transform: scale(1.1);
 }

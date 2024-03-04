@@ -1,5 +1,7 @@
 <?php
-	require_once('functions/common_func.php');
+require_once(__DIR__ . '/includes/connect.php');
+
+require_once('functions/common_func.php');
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +107,8 @@
         <div class="header-user-actions">
 
           <button class="action-btn">
-            <ion-icon name="person-outline" style="color: #be4d25;"></ion-icon>
+          <a href="./user/register_user.php">
+            <ion-icon name="person-outline" style="color: #be4d25;"></ion-icon></a>
           </button>
 
           <button class="action-btn">

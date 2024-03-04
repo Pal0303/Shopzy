@@ -1,6 +1,5 @@
 <?php
 
-include('./includes/connect.php');
 
 //to display category
 function getcategory($page){
@@ -133,7 +132,6 @@ while($row=mysqli_fetch_assoc($result)){
 
 echo "</div>";
 
-
 }
 }
 
@@ -262,13 +260,13 @@ while($row=mysqli_fetch_assoc($result)){
       <div class='showcase-actions'>
   
         <button class='btn-action'>
-        <a href='product_detail.php?prod_id=$product_id'>
+        <a href='product_detail.php?prod_id=$product_id' style='color: #be4d25;'>
           <ion-icon name='eye-outline'></ion-icon></a>
         </button>
   
         <button class='btn-action'>
         <a href='index.php?add_to_cart=$product_id'>
-          <ion-icon name='bag-add-outline'></ion-icon></a>
+          <ion-icon name='bag-add-outline' style='color:#be4d25;'></ion-icon></a>
         </button>
   
       </div>";
