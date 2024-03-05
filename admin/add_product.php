@@ -1,6 +1,7 @@
 <?php
 
 include('../includes/connect.php');
+require_once('index.php');
 
 ?>
 

@@ -1899,6 +1899,8 @@ footer {
     pointer-events: all;
   }
 
+
+
   .dropdown-panel-list .menu-title a {
     color: var(--onyx);
     font-size: var(--fs-7);

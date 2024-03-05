@@ -1,95 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css?v=0.1">
 
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- My CSS -->
-	<link rel="stylesheet" href="style.css">
-
-	<title>Admin</title>
 </head>
 <body>
 
+<section class="app">
+    <aside class="sidebar">
+        <header>
+            Menu
+        </header>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#"><i class="ion-ios-medical-outline"></i> <span>&nbsp;&nbsp;&nbsp;Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="index.php?submit_cat"><i class="ion-bag"></i> <span class="">&nbsp;&nbsp;&nbsp;Insert Category</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;View Category</span></a>
+                </li>
+                <li>
+                    <a href="index.php?submit_subcat"><i class="ion-ios-navigate-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;Insert Sub-Category</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;View Sub-Category</span></a>
+                </li>
+                <li>
+                    <a href="index.php?submit_prod"><i class="ion-ios-navigate-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;Insert Product</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;View Product</span></a>
+                </li>
+				
+            </ul>
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">Shopzy</span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="index.php?dashboard.php">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="index.php?submit_cat">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Add Category</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">View Category</span>
-				</a>
-			</li>
-			<li>
-				<a href="index.php?submit_subcat">
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Add Sub-Category</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-group' ></i>
-					<span class="text">View Sub-Category</span>
-				</a>
-			</li>
-            <li>
-				<a href="index.php?submit_prod">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Add Product</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
-	<!-- SIDEBAR -->
+			<ul>
+        <li>
+            <a href="#" style="color: red;"><i class="ion-log-out"></i> <span>&nbsp;&nbsp;&nbsp;Logout</span></a>
+        </li>
+    </ul>
 
-	
+        </nav>
+    </aside>
 
-	<!-- CONTENT -->
-	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
-		</nav>
-		<!-- NAVBAR -->
+
+</section>
+
+</body>
+</html>
+		
 
 	<?php
 	if(isset($_GET['submit_cat'])){

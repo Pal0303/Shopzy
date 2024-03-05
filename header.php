@@ -136,6 +136,7 @@ require_once('functions/common_func.php');
 			<a href="index.php" class="menu-title">Home</a>
           </li>
 
+
           <li class="menu-category">
             <a href="explore.php" class="menu-title">Explore</a>
           </li>
@@ -150,7 +151,9 @@ require_once('functions/common_func.php');
   
 
   ?>
-
+<li class="menu-category">
+			<a href="bot.php" class="menu-title">Chatbot</a>
+          </li>
 
       </div>
 
