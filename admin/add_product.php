@@ -23,6 +23,21 @@ include('../includes/connect.php');
                     </div>
 
                     <div class="form-outline mb-4 m-auto">
+                        <label for="prod_feat1" class="form-label">Product Feature-1</label>
+                        <input type="text" class="form-control" name="prod_feat1" placeholder="Enter Product features" required>
+                    </div>
+
+                    <div class="form-outline mb-4 m-auto">
+                        <label for="prod_feat2" class="form-label">Product Feature-2</label>
+                        <input type="text" class="form-control" name="prod_feat2" placeholder="Enter Product features" >
+                    </div>
+
+                    <div class="form-outline mb-4 m-auto">
+                        <label for="prod_feat3" class="form-label">Product Feature-3</label>
+                        <input type="text" class="form-control" name="prod_feat3" placeholder="Enter Product features" >
+                    </div>
+
+                    <div class="form-outline mb-4 m-auto">
                         <label for="prod_key" class="form-label">Porduct Keyword</label>
                         <input type="text" class="form-control" name="prod_key" placeholder="Enter Product keyword" required>
                     </div>
@@ -60,6 +75,11 @@ include('../includes/connect.php');
                     </div>
 
                     <div class="form-outline mb-4 m-auto">
+                        <label for="prod_dis" class="form-label">Product discount</label>
+                        <input type="text" class="form-control" name="prod_dis" placeholder="Enter Product price discount [%]" required>
+                    </div>
+
+                    <div class="form-outline mb-4 m-auto">
                          <input type="submit" name="submit_prod" class="btn btn-info">
                    </div>
                 </form>
@@ -68,19 +88,34 @@ include('../includes/connect.php');
     
 <?php
 if(isset($_POST['submit_prod'])) {
+
+    $product_title = mysqli_real_escape_string($con, $_POST['prod_title']);
+	$select="select * from `product` where prod_title='$product_title'";
+	$result_select=mysqli_query($con,$select);
+	$number=mysqli_num_rows($result_select);
+
+    if($number > 0){
+        echo "<script>alert('Product already present inside the database')</script>";
+    }
+    else{
+
     $product_title = isset($_POST['prod_title']) ? mysqli_real_escape_string($con, $_POST['prod_title']) : '';
     $product_description = isset($_POST['prod_desc']) ? mysqli_real_escape_string($con, $_POST['prod_desc']) : '';
     $product_keyword = isset($_POST['prod_key']) ? mysqli_real_escape_string($con, $_POST['prod_key']) : '';
     $product_subcategory = isset($_POST['subcategory']) ? $_POST['subcategory'] : '';
+    $product_feat1= isset($_POST['prod_feat1']) ? mysqli_real_escape_string($con, $_POST['prod_feat1']) : '';
+    $product_feat2= isset($_POST['prod_feat2']) ? mysqli_real_escape_string($con, $_POST['prod_feat2']) : '';
+    $product_feat3= isset($_POST['prod_feat3']) ? mysqli_real_escape_string($con, $_POST['prod_feat3']) : '';
     $product_price = isset($_POST['prod_price']) ? intval($_POST['prod_price']) : '';
     $product_status = 'true';
+    $product_discount= isset($_POST['prod_dis']) ? mysqli_real_escape_string($con, $_POST['prod_dis']) : '';
 
     $product_img1 = isset($_FILES['prod_img1']['name']) ? $_FILES['prod_img1']['name'] : '';
     $product_img2 = isset($_FILES['prod_img2']['name']) ? $_FILES['prod_img2']['name'] : '';
     $tmp_img1 = isset($_FILES['prod_img1']['tmp_name']) ? $_FILES['prod_img1']['tmp_name'] : '';
     $tmp_img2 = isset($_FILES['prod_img2']['tmp_name']) ? $_FILES['prod_img2']['tmp_name'] : '';
 
-    if($product_title === '' || $product_description === '' || $product_keyword === '' || $product_subcategory === '' || $product_price === '' || $product_img1 === '' || $product_price === 0) {
+    if($product_title === '' || $product_description === '' || $product_feat1==='' || $product_keyword === '' || $product_subcategory === '' || $product_price === '' || $product_img1 === '' || $product_price === 0) {
         echo "<script>alert('Please fill all the available fields')</script>";
         
     }
@@ -89,14 +124,15 @@ if(isset($_POST['submit_prod'])) {
         move_uploaded_file($tmp_img1, $upload_directory . $product_img1);
         move_uploaded_file($tmp_img2, $upload_directory . $product_img2);
 
-        $insert_prod = "INSERT INTO `product` (prod_title, prod_desc, prod_key, subcat_id, prod_img1, prod_img2, prod_price, prod_date, prod_status)
-                        VALUES ('$product_title', '$product_description', '$product_keyword', '$product_subcategory', '$product_img1', '$product_img2', '$product_price', NOW(), '$product_status' )";
+        $insert_prod = "INSERT INTO `product` (prod_title, prod_desc, prod_feat1, prod_feat2, prod_feat3, prod_key, subcat_id, prod_img1, prod_img2, prod_price, prod_discount, prod_date, prod_status)
+                        VALUES ('$product_title', '$product_description', '$product_feat1', '$product_feat2', '$product_feat3', '$product_keyword', '$product_subcategory', '$product_img1', '$product_img2', '$product_price', $product_discount, NOW(), '$product_status' )";
 
         $result_query = mysqli_query($con, $insert_prod);
         if($result_query) {
             echo "<script>alert('Successfully inserted the product')</script>";
         }
     }
+}
 }
 ?>
 

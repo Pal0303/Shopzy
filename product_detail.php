@@ -4,68 +4,70 @@ include('header.php');
 ?>
 
 <style>
-.container {
+.container-d {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    margin-right:100px;
+    margin-left:100px;
 }
 
-.product-box {
+.product-box-d {
     border: 2px solid #ccc;
     border-radius: 10px;
     display: flex;
     padding: 20px;
 }
 
-.product-image {
+.product-image-d {
     margin-right: 20px;
 }
 
-.product-image img {
+.product-image-d img {
     max-width: 400px;
     height: 300px;;
 }
 
-.product-title {
+.product-title-d {
     font-size: 24px;
     margin-top: 0;
 }
 
-.product-price {
+.product-price-d {
     font-size: 20px;
     color: #be4d25;
 }
 
-.product-description {
+.product-description-d {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.quantity {
+.quantity-d {
     margin-bottom: 20px;
 }
 
-.quantity label {
+.quantity-d label {
     font-size: 16px;
     margin-right: 10px;
 }
 
-.quantity input {
+.quantity-d input {
     width: 50px;
     padding: 5px;
     font-size: 16px;
 }
 
-.button-container {
+.button-container-d {
     display: flex;
 }
 
-.add-to-cart, .shop-now {
+.add-to-cart-d, .shop-now-d {
     margin-right: 10px;
 }
 
-.add-to-cart button, .shop-now button {
+.add-to-cart-d button, .shop-now-d button {
     padding: 10px 20px;
     background-color: #be4d25;
     color: #fff;
@@ -75,7 +77,7 @@ include('header.php');
     font-size: 16px;
 }
 
-.add-to-cart button:hover, .shop-now button:hover {
+.add-to-cart-d button:hover, .shop-now-d button:hover {
     background-color: #933c1d;
 }
 

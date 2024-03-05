@@ -17,7 +17,7 @@ require_once('functions/common_func.php');
     - custom css link
   -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=0.1">
 
   <!--
     - google font link

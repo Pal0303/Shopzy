@@ -1,6 +1,5 @@
 <?php
 
-
 //to display category
 function getcategory($page){
     global $con,$category_id;
@@ -74,6 +73,12 @@ global $con;
 $select="select * from `product` order by rand() LIMIT 0,4";
 $result=mysqli_query($con,$select);
 
+$select_subcategory="select * from `subcategories`";
+$result_subcategory=mysqli_query($con,$select_subcategory);
+$row_sub=mysqli_fetch_assoc($result_subcategory);
+$subcategory_title=$row_sub['subcat_title'];
+
+
 while($row=mysqli_fetch_assoc($result)){
   $product_id=$row['prod_id'];
   $product_title=$row['prod_title'];
@@ -82,13 +87,18 @@ while($row=mysqli_fetch_assoc($result)){
   $product_img2=$row['prod_img2'];
   $product_price=$row['prod_price'];
   $subcat_id=$row['subcat_id'];
+  $product_feat1=$row['prod_feat1'];
+  $product_feat2=$row['prod_feat2'];
+  $product_feat3=$row['prod_feat3'];
+  $product_dis=$row['prod_discount'];
+  $del=$product_price+($product_dis * $product_price)/100;
  
   echo "<div class='showcase'>";
   echo "<div class='showcase-banner'>"; 
   echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
     <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
 
-    <p class='showcase-badge'>15%</p>
+    <p class='showcase-badge'>$product_dis%</p>
 
     <div class='showcase-actions'>
 
@@ -108,7 +118,7 @@ while($row=mysqli_fetch_assoc($result)){
 
   echo "<div class='showcase-content'>
 
-    <a href='#' class='showcase-category'>jacket</a>
+    <a href='#' class='showcase-category'>$subcategory_title</a>
 
     <a href='#'>
       <h3 class='showcase-title'>$product_title</h3>
@@ -124,8 +134,8 @@ while($row=mysqli_fetch_assoc($result)){
     
 
     <div class='price-box'>
-      <p class='price'>₹$product_price</p>
-      <del>₹75.00</del>
+      <p class='price'>₹$product_price/-</p>
+      <del>₹$del/-</del>
     </div>
 
   </div>";
@@ -146,6 +156,11 @@ function get_unique_subcat() {
       $select_products = "SELECT * FROM `product` WHERE subcat_id = $subcategory_id";
       $result_products = mysqli_query($con, $select_products);
 
+$select_subcategory="select * from `subcategories`";
+$result_subcategory=mysqli_query($con,$select_subcategory);
+$row_sub=mysqli_fetch_assoc($result_subcategory);
+$subcategory_title=$row_sub['subcat_title'];
+
       
       if($result_products) {
           
@@ -160,6 +175,11 @@ function get_unique_subcat() {
                 $product_img2=$row_product['prod_img2'];
                 $product_price=$row_product['prod_price'];
                 $subcat_id=$row_product['subcat_id'];
+                $product_feat1=$row_product['prod_feat1'];
+                $product_feat2=$row_product['prod_feat2'];
+                $product_feat3=$row_product['prod_feat3'];
+                $product_dis=$row_product['prod_discount'];
+                $del=$product_price+($product_dis * $product_price)/100;
 
                 
                 echo "<div class='showcase'>";
@@ -167,7 +187,7 @@ function get_unique_subcat() {
   echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
     <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
 
-    <p class='showcase-badge'>15%</p>
+    <p class='showcase-badge'>$product_dis%</p>
 
     <div class='showcase-actions'>
 
@@ -187,7 +207,7 @@ function get_unique_subcat() {
 
   echo "<div class='showcase-content'>
 
-    <a href='#' class='showcase-category'>jacket</a>
+    <a href='#' class='showcase-category'>$subcategory_title</a>
 
     <a href='#'>
       <h3 class='showcase-title'>$product_title</h3>
@@ -203,8 +223,8 @@ function get_unique_subcat() {
     
 
     <div class='price-box'>
-      <p class='price'>₹$product_price</p>
-      <del>₹75.00</del>
+      <p class='price'>₹$product_price/-</p>
+      <del>₹$del/-</del>
     </div>
 
   </div>";
@@ -236,6 +256,12 @@ function search_prod(){
     $search_data=$_GET['search_data'];
     $search_query="select * from `product` where prod_key like '%$search_data%'";
     $result=mysqli_query($con,$search_query);
+
+  $select_subcategory="select * from `subcategories`";
+$result_subcategory=mysqli_query($con,$select_subcategory);
+$row_sub=mysqli_fetch_assoc($result_subcategory);
+$subcategory_title=$row_sub['subcat_title'];
+
     if($result) {
           
       if(mysqli_num_rows($result) > 0) {
@@ -248,6 +274,11 @@ while($row=mysqli_fetch_assoc($result)){
   $product_img2=$row['prod_img2'];
   $product_price=$row['prod_price'];
   $subcat_id=$row['subcat_id'];
+  $product_feat1=$row['prod_feat1'];
+  $product_feat2=$row['prod_feat2'];
+  $product_feat3=$row['prod_feat3'];
+  $product_dis=$row['prod_discount'];
+  $del=$product_price+($product_dis * $product_price)/100;
  
 
   echo "<div class='showcase'>";
@@ -255,7 +286,7 @@ while($row=mysqli_fetch_assoc($result)){
     echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
       <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
   
-      <p class='showcase-badge'>15%</p>
+      <p class='showcase-badge'>$product_dis%</p>
   
       <div class='showcase-actions'>
   
@@ -275,7 +306,7 @@ while($row=mysqli_fetch_assoc($result)){
   
     echo "<div class='showcase-content'>
   
-      <a href='#' class='showcase-category'>jacket</a>
+      <a href='#' class='showcase-category'>$subcategory_title</a>
   
       <a href='#'>
         <h3 class='showcase-title'>$product_title</h3>
@@ -290,8 +321,8 @@ while($row=mysqli_fetch_assoc($result)){
       </div>
   
       <div class='price-box'>
-        <p class='price'>₹$product_price</p>
-        <del>₹75.00</del>
+        <p class='price'>₹$product_price/-</p>
+        <del>₹$del/-</del>
       </div>
   
     </div>";
@@ -313,6 +344,11 @@ function get_all(){
   global $con;
   $select="select * from `product` order by rand()";
   $result=mysqli_query($con,$select);
+
+$select_subcategory="select * from `subcategories`";
+$result_subcategory=mysqli_query($con,$select_subcategory);
+$row_sub=mysqli_fetch_assoc($result_subcategory);
+$subcategory_title=$row_sub['subcat_title'];
   
   while($row=mysqli_fetch_assoc($result)){
     $product_id=$row['prod_id'];
@@ -322,13 +358,18 @@ function get_all(){
     $product_img2=$row['prod_img2'];
     $product_price=$row['prod_price'];
     $subcat_id=$row['subcat_id'];
+    $product_feat1=$row['prod_feat1'];
+    $product_feat2=$row['prod_feat2'];
+    $product_feat3=$row['prod_feat3'];
+    $product_dis=$row['prod_discount'];
+    $del=$product_price+($product_dis * $product_price)/100;
    
     echo "<div class='showcase'>";
     echo "<div class='showcase-banner'>"; 
     echo "<img src='./admin/product_img/$product_img1' alt='$product_title' width=\"300\" class='product-img default'>
       <img src='./admin/product_img/$product_img2' alt='$product_title' width=\"300\" class='product-img hover'>
   
-      <p class='showcase-badge'>15%</p>
+      <p class='showcase-badge'>$product_dis%</p>
   
       <div class='showcase-actions'>
   
@@ -348,7 +389,7 @@ function get_all(){
   
     echo "<div class='showcase-content'>
   
-      <a href='#' class='showcase-category'>jacket</a>
+      <a href='#' class='showcase-category'>$subcategory_title</a>
   
       <a href='#'>
         <h3 class='showcase-title'>$product_title</h3>
@@ -363,8 +404,8 @@ function get_all(){
       </div>
   
       <div class='price-box'>
-        <p class='price'>₹$product_price</p>
-        <del>₹75.00</del>
+        <p class='price'>₹$product_price/-</p>
+        <del>₹$del/-</del>
       </div>
   
     </div>";
@@ -390,26 +431,33 @@ while($row=mysqli_fetch_assoc($result)){
   $product_img2=$row['prod_img2'];
   $product_price=$row['prod_price'];
   $subcat_id=$row['subcat_id'];
+  $product_feat1=$row['prod_feat1'];
+  $product_feat2=$row['prod_feat2'];
+  $product_feat3=$row['prod_feat3'];
+  $product_dis=$row['prod_discount'];
+  $del=$product_price+($product_dis * $product_price)/100;
  
-  echo "<div class='container'>
-  <div class='product-box'>
-      <div class='product-image'>
+  echo "<div class='container-d'>
+  <div class='product-box-d'>
+      <div class='product-image-d'>
           <img src='./admin/product_img/$product_img1' alt='$product_title'>
       </div>
-      <div class='product-details'>
-          <h1 class='product-title'>$product_title</h1>
-          <p class='product-price'>₹$product_price</p>
-          <p class='product-description'>$product_description</p>
-          <div class='quantity'>
-              <label for='quantity'>Quantity:</label>
-              <input type='number' id='quantity' name='quantity' value='1' min='1'>
-          </div>
-          <div class='button-container'>
-              <div class='add-to-cart'>
+      <div class='product-details-d'>
+          <h1 class='product-title-d'>$product_title</h1>
+          <p class='product-price-d'>₹$product_price/-</p>
+          
+          <p class='product-description-d'>$product_description</p>
+          <h1 class='product-title-d'>Features:</h1>
+          <p class='product-description-d'>$product_feat1</p>
+          <p class='product-description-d'>$product_feat2</p>
+          <p class='product-description-d'>$product_feat3</p>
+         
+          <div class='button-container-d'>
+              <div class='add-to-cart-d'>
               <a href='index.php?add_to_cart=$product_id'>
                   <button>Add to Cart</button></a>
               </div>
-              <div class='shop-now'>
+              <div class='shop-now-d'>
                   <button>Shop Now</button>
               </div>
           </div>

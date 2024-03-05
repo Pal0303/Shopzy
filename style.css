@@ -21,9 +21,9 @@
   --dark-blue1: #1a6985;
   --dark-blue2: #165a72;
 
-  .price{
+  /* .price{
     margin-left: 910px;
-  }
+  } */
 
   /**
    * typography
@@ -556,13 +556,13 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   
   .product-featured .price-box {
     font-size: var(--fs-3);
-    display: flex;
+    /* display: flex; */
     gap: 10px;
     margin-bottom: 10px;
   }
   
   .product-featured .price {
-    color: var(--salmon-pink);
+    color: var(--red);
     font-weight: var(--weight-700);
   }
   
@@ -572,7 +572,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   }
   
   .product-featured .add-cart-btn {
-    background: var(--salmon-pink);
+    background: var(--red);
     padding: 8px 15px;
     color: var(--white);
     font-weight: var(--fs-9);
@@ -615,7 +615,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
     left: 3px;
     height: 4px;
     width: 40%;
-    background: var(--salmon-pink);
+    background: var(--red);
     border-radius: 4px;
   }
   
@@ -2256,4 +2256,3 @@ footer {
   }
 
 }
-
