@@ -4,17 +4,34 @@
 ?>
 					
 					
-				<h3>Insert Category</h3>
-					
-				<form action="" method="post">
-					<div class="mb-3">
-                        <label for="cat_title" class="form-label"></label>
-                        <input type="text" class="form-control" name="cat_title" placeholder="Enter Category title">
-                    </div>
-                    <div class="mb-3">
-                        <input type="submit" class="btn btn-info" name="submit_cat" value="submit"></input>
-                    </div>
-                </form>
+	<div class="container">
+      <div class="text">
+         Insert Category
+      </div>
+      <form action="#" method="post">
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text" name="cat_title" required>
+               <div class="underline"></div>
+               <label for="cat_title">Insert Category title here..</label>
+            </div>
+            
+         </div>
+        
+            <div class="form-row submit-btn">
+               <div class="input-data">
+                  <div class="inner"></div>
+                  <input type="submit"  name="submit_cat" value="submit">
+               </div>
+            </div>
+      </form>
+    </div>
+
+	</section>
+
+</body>
+</html>	
+
            
 
 

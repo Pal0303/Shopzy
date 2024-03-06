@@ -50,10 +50,7 @@
     </aside>
 
 
-</section>
 
-</body>
-</html>
 		
 
 	<?php

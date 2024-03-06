@@ -106,10 +106,31 @@ require_once('functions/common_func.php');
 
         <div class="header-user-actions">
 
-          <button class="action-btn">
+
+<?php
+
+
+session_start();
+if(!isset($_SESSION['email'])){
+  echo "<button class='action-btn'>
+          <a href='./user/login_user.php'>
+            <ion-icon name='person-outline' style='color: #be4d25;'></ion-icon></a>
+        </button>";
+
+} 
+else {
+  echo "<button class='action-btn'>
+          <a href='./user/logout_user.php'>
+            <ion-icon name='log-out-outline' style='color: #be4d25;'></ion-icon></a>
+        </button>";
+}
+
+?>
+
+          <!-- <button class="action-btn">
           <a href="./user/register_user.php">
             <ion-icon name="person-outline" style="color: #be4d25;"></ion-icon></a>
-          </button>
+          </button> -->
 
           <button class="action-btn">
             <a href="cart.php">

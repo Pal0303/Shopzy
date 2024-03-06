@@ -35,8 +35,11 @@
 
 
 <?php
+
+
 require_once('../includes/connect.php');
 require_once('../functions/common_func.php');
+@session_start();
 
 if(isset($_POST['login'])){
     $email=$_POST['email'];
@@ -53,12 +56,16 @@ if(isset($_POST['login'])){
     $row_count=mysqli_num_rows($result_cart);
     
     if($row>0){
+      $_SESSION['email']=$email;
         if(password_verify($pwd, $row_data['user_pwd'])){
+         
             if($row==1 and $row_count==0){
+              $_SESSION['email']=$email;
                 echo "<script>alert('Login Suceessful')</script>";
                 header('Location: profile.php');
             }
             else{
+              $_SESSION['email']=$email;
                 echo "<script>alert('Login Suceessful')</script>";
                 header('Location: payment.php');
             }
@@ -73,4 +80,5 @@ if(isset($_POST['login'])){
     }
 
 }
+
 ?>
