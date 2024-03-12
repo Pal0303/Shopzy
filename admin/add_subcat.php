@@ -1,10 +1,74 @@
 <?php
 include('../includes/connect.php');
 require_once('index.php');
-
 ?>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<main>
+
+<div class="container">
+      <div class="text">
+         Insert Sub-Category
+      </div>
+      <form action="#" method="post">
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text" name="subcat_title" required>
+               <div class="underline"></div>
+               <label for="subcat_title">Insert Sub-Category title here..</label>
+            </div>
+            
+         </div>
+
+		<div class="form-row">
+            <div class="input-data">
+			<div class="select">
+			<select  name="category" id="category">
+
+			<?php
+
+                $select_category="select * from `categories`";
+				$result_category=mysqli_query($con,$select_category);
+				while($row_data=mysqli_fetch_assoc($result_category)){
+				$category_title=$row_data['cat_title'];
+				$category_id=$row_data['cat_id'];
+				echo "<option value=''  disabled selected hidden>Select Category..</option>
+				<option value='$category_id'>$category_title</option>";
+				}
+
+			?>
+
+            </select>
+            </div>
+            </div>
+        </div>
+        
+            <div class="form-row submit-btn">
+               <div class="input-data">
+                  <div class="inner"></div>
+                  <input type="submit"  name="submit_subcat" value="submit">
+               </div>
+            </div>
+      </form>
+    </div>
+
+	</section>
+
+</body>
+</html>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <main>
 <div class="table-data">
 			<div class="order">
 					<div class="head">
@@ -15,13 +79,13 @@ require_once('index.php');
                 <select name="category" id="category">
                 <?php
 
-                    $select_category="select * from `categories`";
-                    $result_category=mysqli_query($con,$select_category);
-                    while($row_data=mysqli_fetch_assoc($result_category)){
-                    $category_title=$row_data['cat_title'];
-                    $category_id=$row_data['cat_id'];
-                    echo "<option value='$category_id'>$category_title</option>";
-                    }
+                    // $select_category="select * from `categories`";
+                    // $result_category=mysqli_query($con,$select_category);
+                    // while($row_data=mysqli_fetch_assoc($result_category)){
+                    // $category_title=$row_data['cat_title'];
+                    // $category_id=$row_data['cat_id'];
+                    // echo "<option value='$category_id'>$category_title</option>";
+                    // }
 
                 ?>
        
@@ -34,7 +98,7 @@ require_once('index.php');
                         <input type="submit" class="btn btn-info" name="submit_subcat" value="submit"></input>
                     </div>
                 </form>
-            </div>
+            </div> -->
 
 			<?php
                 if(isset($_POST['submit_subcat'])){
@@ -58,5 +122,3 @@ require_once('index.php');
 			
 
 			?>
-</div>
-</main>

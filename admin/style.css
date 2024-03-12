@@ -111,7 +111,7 @@ border-bottom: 2px solid rgba(0,0,0, 0.12);
 .input-data input:valid ~ label, .textarea textarea:valid ~ label{
 transform: translateY(-20px);
 font-size: 14px;
-color: #3498db;
+color: #071e26;
 }
 
 .textarea textarea{
@@ -145,7 +145,7 @@ position: absolute;
 content: "";
 height: 2px;
 width: 100%;
-background: #3498db;
+background: #071e26;
 transform: scaleX(0);
 transform-origin: center;
 transition: transform 0.3s ease;
@@ -212,3 +212,48 @@ width: 40%!important;
 }
 
 }
+
+/* Styling for select dropdown */
+.input-data select {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px solid rgba(0,0,0, 0.12);
+    -webkit-appearance: none; /* Remove default arrow in Safari */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+    appearance: none; /* Remove default arrow */
+    background: transparent; /* Ensure consistent appearance */
+}
+
+/* Styling for select dropdown options */
+.input-data select option {
+    background-color: #fff; /* Match background color */
+    color: #071e26; /* Match text color */
+}
+
+/* Styling for select dropdown when focused or valid */
+.input-data select:focus, 
+.input-data select:valid {
+    border-bottom: 2px solid #071e26; /* Match border color */
+}
+
+/* Styling for select dropdown when focused or valid */
+.input-data select:focus ~ label,
+.input-data select:valid ~ label {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: #071e26;
+}
+
+/* Styling for select dropdown label */
+.input-data select + label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+  
