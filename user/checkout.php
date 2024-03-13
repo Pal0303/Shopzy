@@ -5,7 +5,9 @@ if(!isset($_SESSION['email'])){
     include('login_user.php');
 }
 else{
-    header('Location: payment.php');
+    header('Location: ../payment.php');
+    ob_end_flush();
+exit;
  }
  
 

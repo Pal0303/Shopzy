@@ -67,7 +67,7 @@ if(isset($_POST['login'])){
             else{
               $_SESSION['email']=$email;
                 echo "<script>alert('Login Suceessful')</script>";
-                header('Location: payment.php');
+                header('Location: ../payment.php');
             }
         }
         else{
