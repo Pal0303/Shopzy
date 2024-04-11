@@ -1,3 +1,23 @@
+<?php
+  require_once('functions/common_func.php');
+  require_once('includes/connect.php');
+
+  $ip = getIPAddress();
+$get_user = "SELECT * FROM `user_table` WHERE user_ip='$ip'";
+$result = mysqli_query($con, $get_user);
+
+if (!$result) {
+    die("Error in SQL query: " . mysqli_error($con));
+}
+
+if (mysqli_num_rows($result) > 0) {
+    $run_query = mysqli_fetch_array($result);
+    $user_id = $run_query['user_id'];
+} else {
+    echo "No user found for IP address: $ip";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +50,9 @@
 
 
 <body>
+
+
+
 <div class="overlay" data-overlay></div>
 
 
@@ -88,6 +111,9 @@
   <div class="address">
   <legend>Shipping Address</legend>
     <div class="card">
+      <?php
+      // get_address();
+      ?>
       <address>
         Adam Johnson<br>
         403 Oakland Ave Street, A city, Florida, 32104,<br>
@@ -137,12 +163,15 @@
         </div>
       </div>
     </fieldset>
+
+    
+    <a href="order.php?user_id=<?php echo $user_id ?>">
     <button class="button button--full" type="submit">
       <svg class="icon">
         <use xlink:href="#icon-shopping-bag" />
       </svg>
       Pay Now
-    </button>
+    </button></a>
   </div>
   <div class="summary">
   <legend>Shopping Summary</legend>

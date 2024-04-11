@@ -564,10 +564,49 @@ function total_cart(){
   echo $total;
 }
 
- 
+function get_address(){
+  global $con;
+
+  $select="select * from `user_table`";
+  $result=mysqli_query($con,$select);
+
+while($row=mysqli_fetch_assoc($result)){
+  $add=$row['user_address'];
+  echo "<address>
+  $add
+</address>";
+}
+}
+
   
+function get_orderdetail(){
+  global $con;
+  session_start();
+  $email=$_SESSION['email'];
+  $getdetail="select * from `user_table` where user_email='$email'";
+  $result=mysqli_query($con,$getdetail);
+  while($row=mysqli_fetch_array($result)){
+    $user_id=$row['user_id'];
+    if(!isset($_GET['edit_account'])){
+      if(!isset($_GET['my_orders'])){
+        if(!isset($_GET['delete_account'])){
+          $get_orders="select * from `user_orders` where user_id=$user_id and order_status='pending'";
+          $row_count=mysqli_num_rows($result);
+          if($row_count>0){
+            echo "<h3> You have <span> $row_count</span> Pending orders</h3>
+            <a href='profile.php?my_orders'>Order Details</a>";
 
-
+          }
+          else{
+            echo "<h3> You have <span> zero</span> Pending orders</h3>
+            <a href='../explore.php'>Explore Products</a>";
+          }
+        }
+      }
+    }
+  }
+}
+          
 
 ?>
 

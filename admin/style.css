@@ -68,13 +68,13 @@ body {
 }
 
 .container .text{
-text-align: center;
-font-size: 41px;
-font-weight: 600;
-font-family: 'Poppins', sans-serif;
-background: #071e26;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 41px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background: #071e26;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container form{
@@ -162,7 +162,7 @@ transform: scale(1);
 overflow: hidden;
 height: 45px!important;
 width: 25%!important;
-}
+} 
 
 .submit-btn .input-data .inner{
 height: 100%;
@@ -175,7 +175,7 @@ transition: all 0.4s;
 
 .submit-btn .input-data:hover .inner{
 left: 0;
-}
+} 
 
 .submit-btn .input-data input{
 background: none;
@@ -211,7 +211,7 @@ margin: 35px 0!important;
 width: 40%!important;
 }
 
-}
+} 
 
 /* Styling for select dropdown */
 .input-data select {
@@ -255,5 +255,3 @@ width: 40%!important;
     font-size: 16px;
     transition: all 0.3s ease;
 }
-
-  

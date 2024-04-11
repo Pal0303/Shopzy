@@ -51,26 +51,29 @@ while($row=mysqli_fetch_array($result)){
                  
                 </thead>
                 <tbody>
-    <tr style='text-align:center;'>
-    <td data-th='' class='border'>
-      <h6>$product_title</h6>
-    </td>
-    <td data-th='Product Image' class='border'>
-      <img src='./admin/product_img/$product_img1' alt='' class='img-fluid d-none d-md-block rounded mb-2 shadow'>
-    </td>
-    <td><input type='text' name='qty' id='' class='form-input w-50'></td>
+                    <tr style='text-align:center;'>
+                        <td data-th='' class='border'>
+                            <h6>$product_title</h6>
+                        </td>
+
+                        <td data-th='Product Image' class='border'>
+                            <img src='./admin/product_img/$product_img1' alt='' class='img-fluid d-none d-md-block rounded mb-2 shadow'>
+                        </td>
+
+                        <td>
+                            <input type='text' name='qty' id='' class='form-input w-50'>
+                        </td>
    
-    <td data-th='Total Price' class='border'>₹$price_table/-</td>
-    <td class='border'>
-    <input type='checkbox' name='removeitem[]' style='margin-left: -80px;margin-top: 15px;' value='$product_id'><br>
-    <input class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='    background-color: #be4d25;width: 132px;margin-top: -100px;margin-left: 40px;' type='submit' value='Remove' name='remove_cart'>
+                        <td data-th='Total Price' class='border'>
+                            ₹$price_table/-
+                        </td>
 
+                        <td class='border'>
+                            <input type='checkbox' name='removeitem[]' style='margin-left: -80px;margin-top: 15px;' value='$product_id'><br>
+                            <input class='btn btn-primary btn-md pl-4 pr-4 mr-3' style='    background-color: #be4d25;width: 132px;margin-top: -100px;margin-left: 40px;' type='submit' value='Remove' name='remove_cart'>
+                        </td>
 
-</td>
-
-
-
-<td>
+                        <td>
 <div class='d-flex flex-column align-items-center'>
 <div style='background-color: inherit;'>
 

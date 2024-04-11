@@ -44,6 +44,7 @@ require_once('../functions/common_func.php');
 if(isset($_POST['login'])){
     $email=$_POST['email'];
     $pwd=$_POST['password'];
+    
     $ip=getIPAddress();
 
     $select="select * from `user_table` where user_email='$email'";
@@ -62,7 +63,7 @@ if(isset($_POST['login'])){
             if($row==1 and $row_count==0){
               $_SESSION['email']=$email;
                 echo "<script>alert('Login Suceessful')</script>";
-                header('Location: profile.php');
+                header('Location: ../index.php');
             }
             else{
               $_SESSION['email']=$email;

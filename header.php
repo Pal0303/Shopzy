@@ -122,7 +122,11 @@ else {
   echo "<button class='action-btn'>
           <a href='./user/logout_user.php'>
             <ion-icon name='log-out-outline' style='color: #be4d25;'></ion-icon></a>
-        </button>";
+        </button> <button class='action-btn'>
+        <a href='./user/profile.php'>
+            <ion-icon name='person-circle-outline' style='color: #be4d25;'></ion-icon>
+        </a>
+    </button>";
 }
 
 ?>

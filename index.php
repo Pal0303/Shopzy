@@ -82,14 +82,13 @@ require_once('functions/common_func.php');
                     </a>
 
                     <p class="showcase-desc">
-                      Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                      dolor dolor sit amet consectetur Lorem ipsum dolor
+                    Revitalize your hair with our luxurious shampoo pack. Infused with nourishing ingredients like argan oil and vitamin E, our shampoo gently cleanses while leaving your hair feeling silky smooth and manageable. 
                     </p>
 
                     <div class="price-box">
-                      <p class="price">$150.00</p>
+                      <p class="price">150.00</p>
 
-                      <del>$200.00</del>
+                      <del>200.00</del>
                     </div>
 
                     <button class="add-cart-btn">add to cart</button>
@@ -172,13 +171,12 @@ require_once('functions/common_func.php');
                     </h3>
               
                     <p class="showcase-desc">
-                      Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                      dolor dolor sit amet consectetur Lorem ipsum dolor
+                    Indulge in timeless elegance with our exquisite Rose Gold Diamond Earrings. Crafted with precision and attention to detail, these earrings exude sophistication and luxury.
                     </p>
               
                     <div class="price-box">
-                      <p class="price">$1990.00</p>
-                      <del>$2000.00</del>
+                      <p class="price">1990.00</p>
+                      <del>2000.00</del>
                     </div>
               
                     <button class="add-cart-btn">add to cart</button>
@@ -310,7 +308,7 @@ cart();
 
               <h2 class="cta-title">Summer collection</h2>
 
-              <p class="cta-text">Starting @ $10</p>
+              <p class="cta-text">Starting @ RS.200</p>
 
               <button class="cta-btn">Shop now</button>
 
@@ -339,7 +337,7 @@ cart();
                 <div class="service-content">
 
                   <h3 class="service-title">Worldwide Delivery</h3>
-                  <p class="service-desc">For Order Over $100</p>
+                  <p class="service-desc">For Order Over Rs.2500</p>
 
                 </div>
 
