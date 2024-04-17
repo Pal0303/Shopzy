@@ -35,8 +35,9 @@
                     <a href="index.php?submit_prod"><i class="ion-ios-navigate-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;Insert Product</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;View Product</span></a>
+                    <a href="index.php?view_product"><i class="ion-ios-paper-outline"></i> <span class="">&nbsp;&nbsp;&nbsp;View Product</span></a>
                 </li>
+
 				
             </ul>
 
@@ -64,6 +65,14 @@
 
 	if(isset($_GET['submit_prod'])){
 		include('add_product.php');
+	}
+
+    if(isset($_GET['view_product'])){
+		include('view_product.php');
+	}
+
+    if(isset($_GET['edit_prod'])){
+		include('edit_prod.php');
 	}
 	
 	?>

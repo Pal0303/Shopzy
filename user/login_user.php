@@ -57,28 +57,44 @@ if(isset($_POST['login'])){
     $row_count=mysqli_num_rows($result_cart);
     
     if($row>0){
-      $_SESSION['email']=$email;
-        if(password_verify($pwd, $row_data['user_pwd'])){
-         
-            if($row==1 and $row_count==0){
-              $_SESSION['email']=$email;
-                echo "<script>alert('Login Suceessful')</script>";
-                header('Location: ../index.php');
-            }
-            else{
-              $_SESSION['email']=$email;
-                echo "<script>alert('Login Suceessful')</script>";
-                header('Location: ../payment.php');
-            }
+      $_SESSION['email']=$email;  // Set the email session variable
+      if(password_verify($pwd, $row_data['user_pwd'])){
+        if($row==1 and $row_count==0){
+          echo "<script>alert('Login Successful')</script>";
+          header('Location: ../index.php');
         }
         else{
-            echo "<script>alert('Invalid Credentials')</script>";
+          echo "<script>alert('Login Successful')</script>";
+          header('Location: ../payment.php');
         }
-    }
-
-    else{
+      }
+      else{
         echo "<script>alert('Invalid Credentials')</script>";
+      }
     }
+    // if($row>0){
+    //   $_SESSION['email']=$email;
+    //     if(password_verify($pwd, $row_data['user_pwd'])){
+         
+    //         if($row==1 and $row_count==0){
+    //           $_SESSION['email']=$email;
+    //             echo "<script>alert('Login Suceessful')</script>";
+    //             header('Location: ../index.php');
+    //         }
+    //         else{
+    //           $_SESSION['email']=$email;
+    //             echo "<script>alert('Login Suceessful')</script>";
+    //             header('Location: ../payment.php');
+    //         }
+    //     }
+    //     else{
+    //         echo "<script>alert('Invalid Credentials')</script>";
+    //     }
+    // }
+
+    // else{
+    //     echo "<script>alert('Invalid Credentials')</script>";
+    // }
 
 }
 

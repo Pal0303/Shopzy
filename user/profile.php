@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Area</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
     body {
         margin: 0;
@@ -112,9 +113,9 @@ if ($result->num_rows > 0) {
     <ul>
         <li><a href="profile.php?pending_order">Pending Orders</a></li>
         <li><a href="profile.php?edit_acc">Edit Account</a></li>
-        <li><a href="#">My Orders</a></li>
+        <li><a href="profile.php?my_order">My Orders</a></li>
         <li><a href="logout_user.php">Logout</a></li>
-        <li><a href="#">Delete Account</a></li>
+        <li><a href="profile.php?delete_acc">Delete Account</a></li>
        
     </ul>
 </div>
@@ -124,6 +125,15 @@ if ($result->num_rows > 0) {
 <div class="content">
     <?php
     get_orderdetail();
+    if(isset($_GET['edit_acc'])){
+        include('edit_acc.php');
+    }
+    if(isset($_GET['my_order'])){
+        include('my_order.php');
+    }
+    if(isset($_GET['delete_acc'])){
+        include('delete_acc.php');
+    }
     $con->close();
     ?>
 </div>

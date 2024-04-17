@@ -42,6 +42,13 @@ if (mysqli_num_rows($result) > 0) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+	<style>
+		.qr_code{
+			height: 200px;
+			margin-top: 10px;
+			margin-left: 120px;
+		}
+	</style>
 
 
 </head>
@@ -132,9 +139,9 @@ if (mysqli_num_rows($result) > 0) {
             </svg>
             Cash on delivery
           </label>
-          <input id="cash" name="payment-method" type="radio" checked />
+          <input id="cash" name="payment-method" type="radio" checked onchange="toggleQRCodeVisibility()"/>
         </div>
-        <div class="form__radio">
+        <!-- <div class="form__radio">
           <label for="visa">
             <svg class="icon">
               <use xlink:href="#icon-visa" />
@@ -151,22 +158,26 @@ if (mysqli_num_rows($result) > 0) {
             PayPal
           </label>
           <input id="paypal" name="payment-method" type="radio" />
-        </div>
+        </div> -->
         <div class="form__radio">
-          <label for="mastercard">
+          <label for="upi">
             <svg class="icon">
               <use xlink:href="#icon-mastercard" />
             </svg>
-            Master Card
+            UPI
           </label>
-          <input id="mastercard" name="payment-method" type="radio" />
+          <input id="upi" name="payment-method" type="radio" onchange="toggleQRCodeVisibility()"/>
         </div>
+		<!-- code for qr code -->
+	<div>
+		<img id="qr_code" class="qr_code" src="img/qr_code.png" alt="This is a QR CODE">
+	</div>
       </div>
     </fieldset>
 
     
     <a href="order.php?user_id=<?php echo $user_id ?>">
-    <button class="button button--full" type="submit">
+    <button class="button button--full pay_now" type="submit">
       <svg class="icon">
         <use xlink:href="#icon-shopping-bag" />
       </svg>
@@ -293,15 +304,28 @@ if (mysqli_num_rows($result) > 0) {
 </svg>
 
 
-<script>
+<!-- <script>
     document.querySelectorAll('input[name="payment-method"]').forEach(function(elem) {
         elem.addEventListener('click', function() {
-            if (this.id !== 'cash') {
-                alert('Currently, only Cash on Delivery is available. Thank you.');
+            if (this.id !== 'cash' && this.id !== 'upi') {
+                alert('Invalid payment method selected.');
                 document.getElementById('cash').checked = true;
+				document.getElementById('upi').checked = true; // Defaulting to Cash on Delivery
             }
         });
     });
+</script> -->
+
+<script>
+   function toggleQRCodeVisibility() {
+    var qrCode = document.getElementById('qr_code');
+    var upiRadio = document.getElementById('upi');
+    if (upiRadio.checked) {
+      qrCode.style.display = 'block'; // Show QR code if UPI is selected
+    } else {
+      qrCode.style.display = 'none'; // Hide QR code otherwise
+    }
+  }
 </script>
 
 <?php

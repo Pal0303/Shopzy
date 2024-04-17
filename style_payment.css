@@ -124,6 +124,7 @@
   
   .button--full {
     inline-size: 100%;
+    text-decoration: none;
   }
   
   .card {
@@ -190,4 +191,10 @@
     margin: auto; /* Center the content horizontally */
     padding: 2em;
     box-sizing: border-box;
+  }
+
+  /* code for qr code */
+  .qr_code{
+    height: 200px;
+    width: 200px;
   }
