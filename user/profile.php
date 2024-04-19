@@ -114,6 +114,7 @@ if ($result->num_rows > 0) {
         <li><a href="profile.php?pending_order">Pending Orders</a></li>
         <li><a href="profile.php?edit_acc">Edit Account</a></li>
         <li><a href="profile.php?my_order">My Orders</a></li>
+        <li><a href="profile.php?blog">Add a blog</a></li>
         <li><a href="logout_user.php">Logout</a></li>
         <li><a href="profile.php?delete_acc">Delete Account</a></li>
        
@@ -133,6 +134,9 @@ if ($result->num_rows > 0) {
     }
     if(isset($_GET['delete_acc'])){
         include('delete_acc.php');
+    }
+    if(isset($_GET['blog'])){
+        include('blog.php');
     }
     $con->close();
     ?>

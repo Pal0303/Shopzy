@@ -49,3 +49,8 @@ CREATE TABLE user_table (
     user_mobile VARCHAR(10),
     user_gender VARCHAR(255)
 );
+
+--create blog table 
+CREATE TABLE blogs ( blog_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, blog_name VARCHAR(255) NOT NULL, 
+blog_title VARCHAR(255) NOT NULL, blog_description TEXT, blog_content TEXT NOT NULL, blog_date DATE NOT NULL,
+blog_image VARCHAR(255), FOREIGN KEY (user_id) REFERENCES user_table(user_id) );

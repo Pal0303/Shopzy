@@ -315,4 +315,3 @@ form .user-details .input-box{
 
 </body>
 </html>
-

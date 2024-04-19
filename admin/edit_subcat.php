@@ -40,9 +40,7 @@ $result_cats = mysqli_query($con, $get_cats);
 
         <div class="form-row">
             <div class="input-data">
-                <span>Select Category:</span>
                 <select name="cat_id" required>
-                    <option value="" disabled>Select Category..</option>
                     <?php
                     // Display categories in dropdown
                     while ($row_cat = mysqli_fetch_assoc($result_cats)) {

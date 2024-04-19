@@ -563,66 +563,43 @@ function total_cart(){
   }
   echo $total;
 }
-
 function get_address(){
   global $con;
+  $ip = getIPAddress(); 
 
-  $select="select * from `user_table`";
-  $result=mysqli_query($con,$select);
-
-while($row=mysqli_fetch_assoc($result)){
-  $add=$row['user_address'];
-  echo "<address>
-  $add
-</address>";
-}
-}
-
-// function get_orderdetail(){
-//   global $con;
-//   session_start();
+  // Prepare the SQL statement
+  $sql = "SELECT user_address FROM `user_table` WHERE user_ip=?";
   
-//   // Debugging: Check if session is active
-//   if(session_status() === PHP_SESSION_ACTIVE){
-//     echo "Session is active.<br>";
-//   } else {
-//     echo "Session is not active.<br>";
-//   }
+  // Prepare the statement
+  $stmt = mysqli_prepare($con, $sql);
 
-//   // Debugging: Check the contents of the $_SESSION array
-//   var_dump($_SESSION);
+  // Bind the parameter
+  mysqli_stmt_bind_param($stmt, "i", $ip); // Assuming user_id is an integer
 
-//   if(isset($_SESSION['email'])){
-//     $email=$_SESSION['email'];
-//     $getdetail="select * from `user_table` where user_email='$email'";
-//     $result=mysqli_query($con,$getdetail);
-    
-//     if(mysqli_num_rows($result) > 0){
-//       while($row=mysqli_fetch_array($result)){
-//         $user_id=$row['user_id'];
-        
-//         if(!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])){
-//           $get_orders="select * from `user_orders` where user_id=$user_id and order_status='pending'";
-//           $result_orders=mysqli_query($con, $get_orders);
-//           $row_count=mysqli_num_rows($result_orders);
-          
-//           if($row_count>0){
-//             echo "<h3> You have <span> $row_count</span> Pending orders</h3>
-//             <a href='profile.php?my_orders'>Order Details</a>";
-//           }
-//           else{
-//             echo "<h3> You have <span> zero</span> Pending orders</h3>
-//             <a href='../explore.php'>Explore Products</a>";
-//           }
-//         }
-//       }
-//     } else {
-//       echo "No user found with the provided email.";
-//     }
-//   } else {
-//     echo "Email not set in session.";
-//   }
-// }
+  // Execute the statement
+  mysqli_stmt_execute($stmt);
+
+  // Get the result
+  $result = mysqli_stmt_get_result($stmt);
+
+  if ($result) {
+      if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_assoc($result);
+          $address = $row["user_address"];
+      } else {
+          $address = "Address not found";
+      }
+  } else {
+      // Handle error
+      echo "Error: " . mysqli_error($con);
+      $address = "Error fetching address";
+  }
+
+  // Close the statement
+  mysqli_stmt_close($stmt);
+
+  return $address;
+}
 
 
   
@@ -635,6 +612,7 @@ function get_orderdetail(){
   while($row=mysqli_fetch_array($result)){
     $user_id=$row['user_id'];
     if(!isset($_GET['edit_acc'])){
+      if(!isset($_GET['blog'])){
       if(!isset($_GET['my_order'])){
         if(!isset($_GET['delete_acc'])){
           $get_orders="select * from `user_orders` where user_id=$user_id and order_status='pending'";
@@ -646,7 +624,7 @@ function get_orderdetail(){
           }
           else if($row_count==1){
             echo "<h3> You have <span> $row_count</span> Pending order</h3>
-            <a href='profile.php?my_orders'>Order Details</a>";
+            <a href='profile.php?my_order'>Order Details</a>";
           }
           else{
             echo "<h3> You have <span> zero</span> Pending order</h3>
@@ -654,11 +632,95 @@ function get_orderdetail(){
           }
         }
       }
+      }
     }
   }
 }
-          
+    
 
+function getblog(){
+  global $con;
+  $select="SELECT b.*, u.username FROM `blogs` b
+           JOIN `user_table` u ON b.user_id = u.user_id
+           ORDER BY rand() LIMIT 0,4";
+  $result=mysqli_query($con,$select);
+  
+  $select_subcategory="select * from `subcategories`";
+  $result_subcategory=mysqli_query($con,$select_subcategory);
+  $row_sub=mysqli_fetch_assoc($result_subcategory);
+  $subcategory_title=$row_sub['subcat_title'];
+  
+  
+  while($row=mysqli_fetch_assoc($result)){
+    $blog_id=$row['blog_id'];
+    $blog_title=$row['blog_title'];
+    $blog_description=$row['blog_description'];
+    $blog_img=$row['blog_image'];
+    $blog_name=$row['blog_name'];
+    $blog_content=$row['blog_content'];
+    $blog_date=$row['blog_date'];
+    $username=$row['username'];
+   
+    echo "<div class='blog-card'>
+
+    <a href='#'>
+      <img src='./user/blog/$blog_img' alt='$blog_name' width='300' class='blog-banner'>
+    </a>
+
+    <div class='blog-content'>
+
+      <a href='blog_display.php?blog_id=$blog_id'>
+        <h3 class='blog-title'>$blog_name</h3>
+      </a>
+
+      <p class='blog-meta'>
+        By <cite>$username</cite> / <time datetime=''>$blog_date</time>
+      </p>
+
+    </div>
+
+  </div>";  
+  
+  }
+  }
+
+
+
+  function blog_detail(){
+    global $con;
+      if(isset($_GET['blog_id'])){
+        $blog_id=($_GET['blog_id']);
+        $select="select * from `blogs` where blog_id=$blog_id";
+        $result=mysqli_query($con,$select);
+  
+  while($row=mysqli_fetch_assoc($result)){
+    $blog_id=$row['blog_id'];
+    $blog_title=$row['blog_title'];
+    $blog_description=$row['blog_description'];
+    $blog_img=$row['blog_image'];
+    $blog_name=$row['blog_name'];
+    $blog_content=$row['blog_content'];
+    $blog_date=$row['blog_date'];
+
+    $formatted_content = '<p>' . nl2br($blog_content) . '</p>';
+   
+    echo "<div class='header1'>
+    <h2>$blog_name</h2>
+  </div>
+  
+  <div class='container1'>
+    <div class='card'>
+      <h2>$blog_title</h2>
+      <h5>$blog_description</h5>
+      <div class='fakeimg' style='display: flex; justify-content: center; align-items: center;'><img src='./user/blog/$blog_img' alt='$blog_name' width='700'></div>
+      $formatted_content
+    </div>
+  </div>
+  ";
+  
+  }
+  }
+  }
 ?>
 
   

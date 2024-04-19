@@ -118,13 +118,10 @@ if (mysqli_num_rows($result) > 0) {
   <div class="address">
   <legend>Shipping Address</legend>
     <div class="card">
-      <?php
-      // get_address();
-      ?>
       <address>
-        Adam Johnson<br>
-        403 Oakland Ave Street, A city, Florida, 32104,<br>
-        United States of America
+      <?php
+      echo get_address();
+      ?>
       </address>
     </div>
   </div>
@@ -141,24 +138,7 @@ if (mysqli_num_rows($result) > 0) {
           </label>
           <input id="cash" name="payment-method" type="radio" checked onchange="toggleQRCodeVisibility()"/>
         </div>
-        <!-- <div class="form__radio">
-          <label for="visa">
-            <svg class="icon">
-              <use xlink:href="#icon-visa" />
-            </svg>
-            Visa Payment
-          </label>
-          <input checked id="visa" name="payment-method" type="radio" />
-        </div>
-        <div class="form__radio">
-          <label for="paypal">
-            <svg class="icon">
-              <use xlink:href="#icon-paypal" />
-            </svg>
-            PayPal
-          </label>
-          <input id="paypal" name="payment-method" type="radio" />
-        </div> -->
+       
         <div class="form__radio">
           <label for="upi">
             <svg class="icon">

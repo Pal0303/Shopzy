@@ -8,7 +8,7 @@ include ('../includes/connect.php');
 
 .table {
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
     margin-top: 20px;
     margin-left: 30px;
     margin-right: 30px;
@@ -41,6 +41,7 @@ a{
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Sr No.</th>
       <th scope="col">Product ID</th>
       <th scope="col">Product Title</th>
       <th scope="col">Product Image</th>
@@ -59,6 +60,7 @@ a{
 
 $get_prod= "SELECT * FROM `product`";
 $result=mysqli_query($con,$get_prod);
+$number=1;
 
 while($row=mysqli_fetch_assoc($result)){
     
@@ -68,22 +70,25 @@ while($row=mysqli_fetch_assoc($result)){
     $prod_price=$row['prod_price'];
     $prod_discount=$row['prod_discount'];
     $status=$row['prod_status'];
+    
 
     $select="select * from `pending_orders` where prod_id=$prod_id";
     $result_select=mysqli_query($con,$select);
     $count=mysqli_num_rows($result_select);
    
     echo "<tr>
-        <th>$prod_id</th>
+        <td>$number</td>
+        <td>$prod_id</td>
         <td>$prod_title</td>
         <td><img src='product_img/$prod_img' style='width: 90px; height: auto; display: block; margin: 0 auto;'></td>
         <td>$prod_price</td>
         <td>$prod_discount</td>
         <td>$count</td>
         <td>$status</td>
-        <td><a href='index.php?edit_prod=$prod_id'><i class='fa-solid fa-pen-to-square'></i></td>
-        <td><i class='fas fa-trash-alt'></i></td>
+        <td><a href='index.php?edit_prod=$prod_id'><i class='fa-solid fa-pen-to-square'></i></a></td>
+        <td><a href='index.php?del_prod=$prod_id'><i class='fas fa-trash-alt'></i></a></td>
       </tr>";
+      $number++;
 
     
 }
