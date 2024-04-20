@@ -63,12 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['publish'])) {
     }
 
     .container {
-      max-width: 1200px;
-      width: 100%;
+      margin-top: 300px;
+      width: 1000px;
       background-color: #fff;
-      padding: 25px 30px;
+      padding: 40px 30px;
       border-radius: 5px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); */
+      box-shadow: 0px 0px 5px #333;
     }
 
     .container .title {

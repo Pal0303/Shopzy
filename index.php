@@ -336,7 +336,9 @@ cart();
 
                 <div class="service-content">
 
-                  <h3 class="service-title">Worldwide Delivery</h3>
+                  <h3 class="service-title">
+                    <a href="worldwide.php" style="color: var(--sonic-silver);">Worldwide Delivery</a>
+                  </h3>
                   <p class="service-desc">For Order Over Rs.2500</p>
 
                 </div>

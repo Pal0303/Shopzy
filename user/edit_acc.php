@@ -87,26 +87,49 @@ if(isset($_GET['edit_acc'])){
   font-family: 'Poppins',sans-serif;
 }
 body{
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* body{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-}
-.container{
+} */
+/* .container{
   max-width: 700px;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+} */
+/* .container{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.container{
+  margin-top: 100px;
+  margin-right: 200px;
 }
-.container .title{
+.edit{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
-.container .title::before{
+/* .container .title::before{
   content: "";
   position: absolute;
   left: 0;
@@ -115,12 +138,13 @@ body{
   width: 30px;
   border-radius: 5px;
   background: #333;
-}
+} */
 .content form .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  align-items: center;
+  /* margin: 20px 0 12px 0; */
 }
 form .user-details .input-box{
   margin-bottom: 15px;
@@ -267,7 +291,9 @@ form .user-details .input-box{
    </head>
 <body>
   <div class="container">
+    <div class="edit">
     <div class="title">Edit Account</div>
+    </div>
     <div class="content">
       <form action="#" method="post" encrypt="multipart/form-data">
         <div class="user-details">

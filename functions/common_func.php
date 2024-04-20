@@ -710,9 +710,9 @@ function getblog(){
   
   <div class='container1'>
     <div class='card'>
-      <h2>$blog_title</h2>
-      <h5>$blog_description</h5>
-      <div class='fakeimg' style='display: flex; justify-content: center; align-items: center;'><img src='./user/blog/$blog_img' alt='$blog_name' width='700'></div>
+      <h2>$blog_title</h2><br>
+      <h5>$blog_description</h5><br>
+      <div class='fakeimg' style='display: flex; justify-content: center; align-items: center;'><img src='./user/blog/$blog_img' alt='$blog_name' width='700'></div><br>
       $formatted_content
     </div>
   </div>
@@ -722,11 +722,3 @@ function getblog(){
   }
   }
 ?>
-
-  
-  
-
-
-
-
-

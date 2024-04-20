@@ -9,6 +9,7 @@ include('header.php');
 <style>
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Center align content */
