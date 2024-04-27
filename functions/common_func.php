@@ -619,16 +619,16 @@ function get_orderdetail(){
           $row_count=mysqli_num_rows($result);
           if($row_count>1){
             echo "<h3> You have <span> $row_count</span> Pending orders</h3>
-            <a href='profile.php?my_orders'>Order Details</a>";
+            <button> <a href='profile.php?my_orders'>Order Details</a> </button>";
 
           }
           else if($row_count==1){
             echo "<h3> You have <span> $row_count</span> Pending order</h3>
-            <a href='profile.php?my_order'>Order Details</a>";
+			<button> <a href='profile.php?my_order'>Order Details</a> </button>";
           }
           else{
             echo "<h3> You have <span> zero</span> Pending order</h3>
-            <a href='../explore.php'>Explore Products</a>";
+            <button> <a href='../explore.php'>Explore Products</a> </button>";
           }
         }
       }
@@ -705,17 +705,17 @@ function getblog(){
     $formatted_content = '<p>' . nl2br($blog_content) . '</p>';
    
     echo "<div class='header1'>
-    <h2>$blog_name</h2>
+    <h2 style='color: #be4d25'>$blog_name</h2>
   </div>
   
   <div class='container1'>
     <div class='card'>
-      <h2>$blog_title</h2><br>
+      <h2 style='color: #be4d25'>$blog_title</h2><br>
       <h5>$blog_description</h5><br>
       <div class='fakeimg' style='display: flex; justify-content: center; align-items: center;'><img src='./user/blog/$blog_img' alt='$blog_name' width='700'></div><br>
       $formatted_content
     </div>
-  </div>
+  </div> <br><br>
   ";
   
   }

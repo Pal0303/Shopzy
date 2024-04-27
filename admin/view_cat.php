@@ -19,7 +19,7 @@ include ('../includes/connect.php');
     color: white;
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .table tbody tr {

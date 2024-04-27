@@ -79,7 +79,29 @@
     
     .content {
         margin-left: 200px;
-        padding: 20px;
+        padding: 20px;  
+    }
+    h3{
+        text-align: center;
+        margin-top: 100px;
+    }
+    button{
+        height: 50px;
+        width: 250px;
+        border-radius: 5px;
+        background-color: #333;
+        color: white;
+        margin-top: 20px;
+        margin-left: 525px;
+    }
+    button a{
+        color: white;
+        font-size: 18px;
+        padding: 10px;
+    }
+    button a:hover{
+        color: white;
+        text-decoration: none;
     }
 </style>
 </head>
@@ -115,9 +137,8 @@ if ($result->num_rows > 0) {
         <li><a href="profile.php?edit_acc">Edit Account</a></li>
         <li><a href="profile.php?my_order">My Orders</a></li>
         <li><a href="profile.php?blog">Add a blog</a></li>
-        <li><a href="logout_user.php">Logout</a></li>
         <li><a href="profile.php?delete_acc">Delete Account</a></li>
-       
+        <li><a href="logout_user.php">Logout</a></li>
     </ul>
 </div>
 

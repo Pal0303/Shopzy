@@ -10,9 +10,8 @@ require_once('index.php');
       <form action="#" method="post">
          <div class="form-row">
             <div class="input-data">
-               <input type="text" name="subcat_title" required>
+               <input type="text" name="subcat_title" placeholder="Insert Sub-Category title here..." required>
                <div class="underline"></div>
-               <label for="subcat_title">Insert Sub-Category title here..</label>
             </div>
             
          </div>
@@ -20,7 +19,7 @@ require_once('index.php');
 		<div class="form-row">
             <div class="input-data">
 			<div class="select">
-			<select  name="category" id="category">
+			<select name="category" id="category">
 
 			<?php
 

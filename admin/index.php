@@ -16,9 +16,7 @@
         </header>
         <nav class="sidebar-nav">
             <ul>
-                <li>
-                    <a href="#"><i class="ion-ios-medical-outline"></i> <span>&nbsp;&nbsp;&nbsp;Dashboard</span></a>
-                </li>
+               
                 <li>
                     <a href="index.php?submit_cat"><i class="ion-bag"></i> <span class="">&nbsp;&nbsp;&nbsp;Insert Category</span></a>
                 </li>

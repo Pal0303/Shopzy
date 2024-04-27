@@ -18,29 +18,7 @@
 
         getcategory('footer');
 
-    //     $select_category="select * from `categories`";
-    //     $result_category=mysqli_query($con,$select_category);
-    // while($row_data=mysqli_fetch_assoc($result_category)){
-    //       echo "<div class='footer-category-box'>";
-    //       $category_title=$row_data['cat_title'];
-    //       $category_id=$row_data['cat_id'];
-    //       echo "<h3 class='category-box-title'>$category_title:</h3>";
-        
-
-    //     $select_subcategory="select * from `subcategories` where cat_id = $category_id";
-    //     $result_subcategory=mysqli_query($con,$select_subcategory);
-    //   if (mysqli_num_rows($result_subcategory) > 0){
-    //     while($row_subdata=mysqli_fetch_assoc($result_subcategory)){
-    //       $subcategory_title=$row_subdata['subcat_title'];
-    //       $subcategory_id=$row_subdata['subcat_id'];
-    //       echo "<a href='#' class='footer-category-link'>$subcategory_title</a>";
-    //     }
-       
-    //   }
-      
-    //   echo "</div>";
-    // }     
-
+  
   ?>
 
 
@@ -59,82 +37,50 @@
             <h2 class="nav-title">Popular Categories</h2>
           </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Fashion</a>
-          </li>
+          
+<?php
+require_once('includes/connect.php');
+          $select_category="select * from `categories`";
+    $result_category=mysqli_query($con,$select_category);
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Electronic</a>
-          </li>
+    while($row_data=mysqli_fetch_assoc($result_category)){
+          $category_title=$row_data['cat_title'];
+          $category_id=$row_data['cat_id'];
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Cosmetic</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Health</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Watches</a>
-          </li>
+          echo "<li class='footer-nav-item'>
+          <a href='index.php' class='footer-nav-link'>$category_title</a>
+        </li>";
+         
+       
+    } 
+    ?>
 
         </ul>
 
         <ul class="footer-nav-list">
         
           <li class="footer-nav-item">
-            <h2 class="nav-title">Products</h2>
+            <h2 class="nav-title">SubCategories</h2>
           </li>
         
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
+          <?php
+require_once('includes/connect.php');
+          $select_subcategory="select * from `subcategories`";
+    $result_subcategory=mysqli_query($con,$select_subcategory);
 
-        <ul class="footer-nav-list">
+    while($row_data=mysqli_fetch_assoc($result_subcategory)){
+          $subcategory_title=$row_data['subcat_title'];
+          $subcategory_id=$row_data['subcat_id'];
+
+          echo "<li class='footer-nav-item'>
+          <a href='#' class='footer-nav-link'>$subcategory_title</a>
+        </li>";
+         
+       
+    } 
+    ?>
         
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Our Company</h2>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Delivery</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Legal Notice</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Terms and conditions</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">About us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Secure payment</a>
-          </li>
-        
+          
         </ul>
 
         <ul class="footer-nav-list">
@@ -144,24 +90,21 @@
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="worldwide.php" class="footer-nav-link">Worldwide delivery</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
+            <a href="nextday.php" class="footer-nav-link">Next day delivery</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
+            <a href="onlinesupport" class="footer-nav-link">Online support</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
+            <a href="returnpolicy.php" class="footer-nav-link">Return Policy</a>
           </li>
         
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
         
         </ul>
 
@@ -177,8 +120,9 @@
             </div>
 
             <address class="content">
-              419 State 414 Rte
-              Beaver Dams, New York(NY), 14812, USA
+            123 Main St
+              Bengaluru, Karnataka(KA), 560001, India
+
             </address>
           </li>
 
@@ -187,15 +131,15 @@
               <ion-icon name="call-outline"></ion-icon>
             </div>
 
-            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
-          </li>
+            <a href="tel:+607936-8058" class="footer-nav-link">+91 98765 43210</a>
+
 
           <li class="footer-nav-item flex">
             <div class="icon-box">
               <ion-icon name="mail-outline"></ion-icon>
             </div>
 
-            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+            <a href="mailto:example@gmail.com" class="footer-nav-link">shopzy@gmail.com</a>
           </li>
 
         </ul>
@@ -245,8 +189,6 @@
     <div class="footer-bottom">
 
       <div class="container">
-
-        <img src="./img/payment.png" alt="payment method" class="payment-img">
 
         <p class="copyright">
           Copyright &copy; <a href="#">Shopzy</a> all rights reserved.

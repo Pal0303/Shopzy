@@ -11,9 +11,8 @@
       <form action="#" method="post">
          <div class="form-row">
             <div class="input-data">
-               <input type="text" name="cat_title" required>
+               <input type="text" name="cat_title" placeholder="Insert Category title here..." required>
                <div class="underline"></div>
-               <label for="cat_title">Insert Category title here..</label>
             </div>
             
          </div>

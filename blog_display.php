@@ -33,6 +33,10 @@ include('header.php');
   background-color: white;
   padding: 20px;
   margin-top: 20px;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+  /* box-shadow: 0px 0px 8px #333; */
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */

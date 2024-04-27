@@ -98,7 +98,7 @@ form .user-details .input-box{
 </style>
 <body>
 <div class="container">
-    <div class="title">Edit Account</div>
+    <div class="title">Delete Account</div>
     <div class="content">
       <form action="#" method="post" encrypt="multipart/form-data">
       <h4>If you delete your account it will do following:</h4>
