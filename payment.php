@@ -166,8 +166,35 @@ if (mysqli_num_rows($result) > 0) {
   </div>
   <div class="summary">
   <legend>Shopping Summary</legend>
-    <table>
-      <tbody>
+    <!-- <table> -->
+
+<?php
+$sql = "SELECT p.prod_title, p.prod_price, c.quantity 
+FROM `cart` c
+INNER JOIN `product` p ON c.prod_id = p.prod_id";
+$result = $con->query($sql);
+
+if (!$result) {
+  // Query execution failed, display error message
+  echo "Error: " . $con->error;
+} else{
+// Check if there are any results
+if ($result->num_rows > 0) {
+    // Output data of each row
+    echo "<table>";
+    echo "<thead><tr><th>Product Name</th><th>Product Price</th></tr></thead>";
+    echo "<tbody>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["prod_title"] . "</td><td>₹ " . $row["prod_price"] . "</td></tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+} else {
+    echo "No products found in the cart.";
+}}
+?>
+
+      <!-- <tbody>
         <tr>
           <td>Shipping fee</td>
           <td align="right">$5.43</td>
@@ -187,7 +214,7 @@ if (mysqli_num_rows($result) > 0) {
           <td align="right">$88.36</td>
         </tr>
       </tfoot>
-    </table>
+    </table> -->
     <a href="index.php" class="go-back-link"><b>Continue shopping</b></a>
   </div>
 </div>
